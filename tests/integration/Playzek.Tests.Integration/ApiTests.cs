@@ -9,7 +9,7 @@ public abstract class ApiTestBase : IAsyncLifetime
 {
     protected PlayzekApiFactory Api { get; } = new();
     public Task InitializeAsync() => Api.InitializeAsync();
-    public Task DisposeAsync() { Api.Dispose(); return Task.CompletedTask; }
+    public async Task DisposeAsync() => await Api.DisposeAsync();
 }
 
 public class AuthenticationTests : ApiTestBase

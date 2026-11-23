@@ -82,15 +82,16 @@ public sealed class PlayzekApiFactory : WebApplicationFactory<Program>
         return await action(scope.ServiceProvider.GetRequiredService<PlayzekDbContext>(), scope.ServiceProvider);
     }
 
-    protected override void Dispose(bool disposing)
+    /// <summary>Șterge baza de test PostgreSQL ÎNAINTE de oprirea host-ului (după oprire nu mai avem servicii).</summary>
+    public override async ValueTask DisposeAsync()
     {
-        if (disposing && UsesPostgres)
+        if (UsesPostgres)
         {
-            using var scope = Services.CreateScope();
-            scope.ServiceProvider.GetRequiredService<PlayzekDbContext>().Database.EnsureDeleted();
+            await using var scope = Services.CreateAsyncScope();
+            await scope.ServiceProvider.GetRequiredService<PlayzekDbContext>().Database.EnsureDeletedAsync();
         }
-        base.Dispose(disposing);
-        if (disposing) _sqlite?.Dispose();
+        await base.DisposeAsync();
+        _sqlite?.Dispose();
     }
 }
 

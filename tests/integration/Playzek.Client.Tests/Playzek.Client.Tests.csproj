@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="GitHubActionsTestLogger" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\backend\api\Playzek.Api\Playzek.Api.csproj" />
+    <ProjectReference Include="..\..\..\client\core\Playzek.Client.Core\Playzek.Client.Core.csproj" />
+    <!-- Același API real pornit în memorie ca în testele backend-ului. -->
+    <Compile Include="..\Playzek.Tests.Integration\PlayzekApiFactory.cs" Link="Shared\PlayzekApiFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+</Project>

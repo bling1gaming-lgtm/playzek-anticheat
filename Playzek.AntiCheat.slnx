@@ -9,8 +9,19 @@
   <Folder Name="/backend/data/">
     <Project Path="backend/data/Playzek.Data/Playzek.Data.csproj" />
   </Folder>
+  <Folder Name="/client/" />
+  <Folder Name="/client/core/">
+    <Project Path="client/core/Playzek.Client.Core/Playzek.Client.Core.csproj" />
+  </Folder>
+  <Folder Name="/client/desktop-app/">
+    <Project Path="client/desktop-app/Playzek.Desktop/Playzek.Desktop.csproj" />
+  </Folder>
+  <Folder Name="/client/service/">
+    <Project Path="client/service/Playzek.ProtectionService/Playzek.ProtectionService.csproj" />
+  </Folder>
   <Folder Name="/tests/" />
   <Folder Name="/tests/integration/">
+    <Project Path="tests/integration/Playzek.Client.Tests/Playzek.Client.Tests.csproj" />
     <Project Path="tests/integration/Playzek.Tests.Integration/Playzek.Tests.Integration.csproj" />
   </Folder>
   <Folder Name="/tests/unit/">

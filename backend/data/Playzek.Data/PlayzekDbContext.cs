@@ -28,6 +28,9 @@ public class PlayzekDbContext(DbContextOptions<PlayzekDbContext> options) : DbCo
     {
         builder.Properties<Enum>().HaveConversion<string>().HaveMaxLength(40);
         builder.Properties<string>().HaveMaxLength(256);
+        // Toate momentele sunt UTC; la citire marcăm explicit Kind=Utc (SQLite nu păstrează Kind).
+        builder.Properties<DateTime>().HaveConversion<UtcDateTimeConverter>();
+        builder.Properties<DateTime?>().HaveConversion<NullableUtcDateTimeConverter>();
     }
 
     protected override void OnModelCreating(ModelBuilder b)
@@ -202,6 +205,14 @@ public class PlayzekDbContext(DbContextOptions<PlayzekDbContext> options) : DbCo
         });
     }
 }
+
+public sealed class UtcDateTimeConverter() : Microsoft.EntityFrameworkCore.Storage.ValueConversion.ValueConverter<DateTime, DateTime>(
+    v => v.Kind == DateTimeKind.Utc ? v : v.ToUniversalTime(),
+    v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+
+public sealed class NullableUtcDateTimeConverter() : Microsoft.EntityFrameworkCore.Storage.ValueConversion.ValueConverter<DateTime?, DateTime?>(
+    v => v == null ? v : v.Value.Kind == DateTimeKind.Utc ? v : v.Value.ToUniversalTime(),
+    v => v == null ? v : DateTime.SpecifyKind(v.Value, DateTimeKind.Utc));
 
 /// <summary>Folosit doar de „dotnet ef” ca să genereze migrațiile PostgreSQL. Nu se conectează la nimic.</summary>
 public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<PlayzekDbContext>

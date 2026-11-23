@@ -1,0 +1,85 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <!--
+    PLAYZEK ANTI-CHEAT — instalator MSI per-machine.
+    - Instalează aplicația desktop (fără privilegii) și PLAYZEK Protection Service (cont LocalService).
+    - Actualizare: MajorUpgrade. Reparare și dezinstalare: mecanismele standard MSI (Setări → Aplicații).
+    - Jurnal de instalare: msiexec /i PLAYZEK-ANTICHEAT-Setup.msi /l*v install.log
+    - Adresa backend-ului: msiexec /i ... BACKENDURL=https://api.exemplu.ro/
+    - Nu dezactivează și nu cere dezactivarea vreunei protecții Windows. Fără driver de kernel.
+  -->
+  <Package Name="PLAYZEK ANTI-CHEAT" Manufacturer="PLAYZEK" Version="$(ProductVersion)"
+           UpgradeCode="6F2C1D7A-3B8E-4F51-9A0C-5E7D2B9C4A11" Scope="perMachine" Compressed="yes" Codepage="65001">
+    <SummaryInformation Description="PLAYZEK ANTI-CHEAT $(ProductVersion)" />
+    <MajorUpgrade DowngradeErrorMessage="O versiune mai nouă a PLAYZEK ANTI-CHEAT este deja instalată." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <!-- Verificare compatibilitate: Windows 10 22H2 (build 19045) sau Windows 11, 64 de biți. -->
+    <Property Id="WINBUILD">
+      <RegistrySearch Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="CurrentBuildNumber" Type="raw" />
+    </Property>
+    <Launch Condition="VersionNT64" Message="PLAYZEK ANTI-CHEAT necesită Windows pe 64 de biți." />
+    <Launch Condition="Installed OR (WINBUILD &gt;= 19045)"
+            Message="PLAYZEK ANTI-CHEAT necesită Windows 10 22H2 (build 19045) sau Windows 11." />
+
+    <Property Id="BACKENDURL" Value="http://127.0.0.1:5080/" Secure="yes">
+      <RegistrySearch Root="HKLM" Key="SOFTWARE\PLAYZEK\AntiCheat" Name="BackendUrl" Type="raw" />
+    </Property>
+    <Property Id="ARPHELPLINK" Value="https://github.com/bling1gaming-lgtm/playzek-anticheat" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="CompanyFolder" Name="PLAYZEK">
+        <Directory Id="INSTALLFOLDER" Name="AntiCheat">
+          <Directory Id="ServiceFolder" Name="service" />
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="MenuFolder" Name="PLAYZEK" />
+    </StandardDirectory>
+
+    <!-- Aplicația desktop -->
+    <ComponentGroup Id="AppFiles" Directory="INSTALLFOLDER">
+      <Files Include="$(PublishDir)app\**">
+        <Exclude Files="$(PublishDir)app\PlayzekAntiCheat.exe" />
+      </Files>
+      <Component Id="AppExe">
+        <File Id="AppExeFile" Source="$(PublishDir)app\PlayzekAntiCheat.exe" KeyPath="yes">
+          <Shortcut Id="AppShortcut" Directory="MenuFolder" Name="PLAYZEK ANTI-CHEAT" WorkingDirectory="INSTALLFOLDER" Advertise="yes" />
+        </File>
+        <RemoveFolder Id="RemoveMenuFolder" Directory="MenuFolder" On="uninstall" />
+      </Component>
+    </ComponentGroup>
+
+    <!-- Serviciul de protecție: cont LocalService, pornire automată, repornire la eșec. -->
+    <ComponentGroup Id="ServiceFiles" Directory="ServiceFolder">
+      <Files Include="$(PublishDir)service\**">
+        <Exclude Files="$(PublishDir)service\PlayzekProtectionService.exe" />
+      </Files>
+      <Component Id="ServiceExe">
+        <File Id="ServiceExeFile" Source="$(PublishDir)service\PlayzekProtectionService.exe" KeyPath="yes" />
+        <ServiceInstall Id="PlayzekService" Name="PlayzekProtectionService" DisplayName="PLAYZEK Protection Service"
+                        Description="Serviciul PLAYZEK ANTI-CHEAT: sesiune protejată, heartbeat și verificări de integritate."
+                        Type="ownProcess" Start="auto" ErrorControl="normal" Account="NT AUTHORITY\LocalService" Vital="yes">
+          <util:ServiceConfig FirstFailureActionType="restart" SecondFailureActionType="restart"
+                              ThirdFailureActionType="none" RestartServiceDelayInSeconds="10" ResetPeriodInDays="1" />
+        </ServiceInstall>
+        <ServiceControl Id="PlayzekServiceControl" Name="PlayzekProtectionService" Start="install" Stop="both"
+                        Remove="uninstall" Wait="yes" />
+      </Component>
+      <Component Id="BackendConfig">
+        <RegistryValue Root="HKLM" Key="SOFTWARE\PLAYZEK\AntiCheat" Name="BackendUrl" Type="string" Value="[BACKENDURL]" KeyPath="yes" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\PLAYZEK\AntiCheat" Name="Version" Type="string" Value="$(ProductVersion)" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="Main" Title="PLAYZEK ANTI-CHEAT" Level="1">
+      <ComponentGroupRef Id="AppFiles" />
+      <ComponentGroupRef Id="ServiceFiles" />
+    </Feature>
+
+    <ui:WixUI Id="WixUI_Minimal" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+  </Package>
+</Wix>

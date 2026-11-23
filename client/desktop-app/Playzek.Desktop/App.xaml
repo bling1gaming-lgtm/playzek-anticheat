@@ -1,0 +1,118 @@
+<Application x:Class="Playzek.Desktop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+  <Application.Resources>
+    <SolidColorBrush x:Key="Graphite" Color="#16181C"/>
+    <SolidColorBrush x:Key="Surface" Color="#0B0C0E"/>
+    <SolidColorBrush x:Key="Surface2" Color="#1D2025"/>
+    <SolidColorBrush x:Key="Line" Color="#2A2E35"/>
+    <SolidColorBrush x:Key="Silver" Color="#D5D9E0"/>
+    <SolidColorBrush x:Key="Muted" Color="#8A919C"/>
+    <SolidColorBrush x:Key="Orange" Color="#FF6A1A"/>
+    <SolidColorBrush x:Key="Red" Color="#E5383B"/>
+    <SolidColorBrush x:Key="Green" Color="#3DD68C"/>
+    <SolidColorBrush x:Key="Amber" Color="#F5B03D"/>
+
+    <!-- Culoarea implicită vine moștenită de la fereastră, ca butoanele să-și poată seta propriul text. -->
+    <Style TargetType="TextBlock">
+      <Setter Property="FontFamily" Value="Segoe UI Variable Text, Segoe UI"/>
+      <Setter Property="FontSize" Value="13"/>
+    </Style>
+    <Style x:Key="Label" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+      <Setter Property="Foreground" Value="{StaticResource Muted}"/>
+      <Setter Property="FontSize" Value="11"/>
+    </Style>
+    <Style x:Key="SectionTitle" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+      <Setter Property="Foreground" Value="{StaticResource Muted}"/>
+      <Setter Property="FontSize" Value="11"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+    <Style x:Key="Card" TargetType="Border">
+      <Setter Property="Background" Value="{StaticResource Surface}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="8"/>
+      <Setter Property="Padding" Value="14"/>
+      <Setter Property="Margin" Value="0,0,0,12"/>
+    </Style>
+
+    <Style x:Key="Button" TargetType="Button">
+      <Setter Property="Foreground" Value="{StaticResource Silver}"/>
+      <Setter Property="Background" Value="{StaticResource Surface2}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+      <Setter Property="FontSize" Value="12.5"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="Padding" Value="14,8"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="B" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="1" CornerRadius="6" Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="B" Property="BorderBrush" Value="{StaticResource Orange}"/>
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="B" Property="Opacity" Value="0.4"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="Primary" TargetType="Button" BasedOn="{StaticResource Button}">
+      <Setter Property="Background" Value="{StaticResource Orange}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Orange}"/>
+      <Setter Property="Foreground" Value="#140800"/>
+    </Style>
+    <Style x:Key="Danger" TargetType="Button" BasedOn="{StaticResource Button}">
+      <Setter Property="Foreground" Value="{StaticResource Red}"/>
+    </Style>
+
+    <!-- Selector segmentat (alegerea jocului). -->
+    <Style x:Key="Segment" TargetType="RadioButton">
+      <Setter Property="Foreground" Value="{StaticResource Silver}"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="RadioButton">
+            <Border x:Name="B" Background="{StaticResource Surface2}" BorderBrush="{StaticResource Line}" BorderThickness="1"
+                    CornerRadius="6" Padding="10,7">
+              <ContentPresenter HorizontalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="B" Property="BorderBrush" Value="{StaticResource Orange}"/>
+                <Setter TargetName="B" Property="Background" Value="#2A1A10"/>
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="B" Property="Opacity" Value="0.5"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <Style x:Key="Input" TargetType="Control">
+      <Setter Property="Background" Value="{StaticResource Surface2}"/>
+      <Setter Property="Foreground" Value="{StaticResource Silver}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+      <Setter Property="Padding" Value="8,6"/>
+      <Setter Property="FontSize" Value="13"/>
+      <Setter Property="Margin" Value="0,4,0,10"/>
+    </Style>
+    <Style TargetType="TextBox" BasedOn="{StaticResource Input}">
+      <Setter Property="CaretBrush" Value="{StaticResource Silver}"/>
+    </Style>
+    <Style TargetType="PasswordBox" BasedOn="{StaticResource Input}">
+      <Setter Property="CaretBrush" Value="{StaticResource Silver}"/>
+    </Style>
+  </Application.Resources>
+</Application>

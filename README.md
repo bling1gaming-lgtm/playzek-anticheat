@@ -6,10 +6,17 @@ backend pe Ubuntu, dashboard de administrare și integrări pentru serverele CS 
 > Starea reală a fiecărei componente: [documentation/STATUS.md](documentation/STATUS.md).
 > Arhitectura și alegerea tehnologiilor: [documentation/architecture/ARCHITECTURE.md](documentation/architecture/ARCHITECTURE.md).
 > API: [documentation/api/API.md](documentation/api/API.md).
+> Instalarea clientului: [documentation/installation/CLIENT.md](documentation/installation/CLIENT.md).
 
 ## Structură
 
 ```
+client/
+  core/                motor de protecție, client API, verificări Windows, IPC, stocare DPAPI
+  service/             PLAYZEK Protection Service (serviciu Windows, LocalService)
+  desktop-app/         aplicația PLAYZEK ANTI-CHEAT (WPF, fără privilegii)
+  installer/           MSI (WiX 6)
+build/                 build-installer.ps1
 backend/
   api/                 host ASP.NET Core (.NET 10): endpoint-uri, rate limiting, health, CLI
   authentication/      parole, JWT, dispozitive, sesiuni anti-cheat, autorizare servere de joc

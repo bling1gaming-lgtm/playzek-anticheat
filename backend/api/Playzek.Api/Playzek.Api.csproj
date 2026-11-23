@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <AssemblyName>Playzek.Api</AssemblyName>
+    <UserSecretsId>playzek-anticheat-api</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\data\Playzek.Data\Playzek.Data.csproj" />
+    <ProjectReference Include="..\..\authentication\Playzek.Authentication\Playzek.Authentication.csproj" />
+  </ItemGroup>
+</Project>

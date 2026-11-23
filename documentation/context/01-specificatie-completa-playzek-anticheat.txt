@@ -1,0 +1,253 @@
+PLAYZEK ANTI-CHEAT — Specificație completă (trimisă de user, Nov 23 2026)
+
+Obiectivul: PLAYZEK ANTI-CHEAT să fie un produs software real, nu un demo, nu doar un dashboard și nu doar un plugin AMXX.
+
+Componente:
+1. PLAYZEK ANTI-CHEAT Windows Client
+2. PLAYZEK System Integrity Engine
+3. PLAYZEK Process Inspection Engine
+4. PLAYZEK Game Integrity Engine
+5. PLAYZEK Behavioral Detection Engine
+6. PLAYZEK Central Backend
+7. PLAYZEK Player Authentication
+8. PLAYZEK Security Monitoring
+9. PLAYZEK Web Administration Dashboard
+10. PLAYZEK CS 1.6 Shield
+11. PLAYZEK CS2 Shield
+12. PLAYZEK Ban and Evidence Management
+13. PLAYZEK Secure Update System
+
+Joc inițial suportat: Counter-Strike 1.6, Counter-Strike 2 (arhitectura trebuie să suporte și alte jocuri în viitor).
+
+Tehnologii cerute:
+- C++20 pentru componente native Windows de securitate
+- C# / .NET 10 pentru componente desktop unde e cazul
+- Windows SDK, API-uri documentate, comunicare HTTPS securizată
+- Backend: Go sau ASP.NET Core, PostgreSQL, Redis, REST API, WebSocket, Nginx, Docker, TLS 1.2+/1.3
+- Dashboard: React, TypeScript, CSS responsive, WebSocket live events
+
+Instalator Windows:
+- PLAYZEK-ANTICHEAT-Setup.exe sau MSI, instalare, verificare runtime, update, uninstaller, repair, logging, code signing
+- Nu necesită dezactivarea Windows Defender, Secure Boot, antivirus
+
+Branding UI:
+- Fundal gri grafit închis, suprafețe negre, accente portocaliu/roșu, tipografie argintie
+- Aspect premium esports/cybersecurity, animații subtile, iconițe moderne
+
+Workflow cerut:
+DOWNLOAD → INSTALL → LOGIN → REGISTER DEVICE → SYSTEM COMPATIBILITY CHECK →
+SYSTEM SECURITY SCAN → ENABLE PROTECTION → LAUNCH GAME →
+CONNECT TO PLAYZEK SERVER → SERVER VALIDATES ANTI-CHEAT SESSION
+
+Important: server-ul validează sesiunea independent, nu se bazează pe
+indicatorul client. Dacă clientul se închide/pierde autorizarea, sesiunea
+protejată expiră conform politicii serverului.
+
+PLAYZEK INTEGRITY ENGINE — responsabilități:
+- verificări compatibilitate Windows, Secure Boot, TPM 2.0, VBS
+- integritate instalare aplicație, verificare semnătură executabile critice
+- verificare hash fișiere critice, integritate serviciu anti-cheat
+- indicatori de drivere vulnerabile cunoscute
+- colectare evenimente de securitate, rapoarte structurate (ID raport,
+  player ID, device ID, session ID, timestamp, versiune Windows/client,
+  categorie verificare, rezultat, severitate, referință dovadă)
+- NU colectează fișiere personale neconexe sau informații sensibile
+
+PLAYZEK DETECTION ENGINE — detectează indicatori asociați cu:
+- cheat-uri cunoscute, modificări neautorizate ale jocului
+- interacțiuni suspecte între procese, indicatori de injectare DLL
+- modificări neașteptate ale memoriei jocului, acces suspect la memorie externă
+- drivere vulnerabile/necunoscute, indicatori de debugging/tampering neautorizat
+- executabile de joc modificate, comportament suspect la runtime
+
+Cerințe importante (restricții explicite din specificație):
+- FĂRĂ rootkit-uri, FĂRĂ mecanisme stealth, FĂRĂ persistență ascunsă
+- FĂRĂ modificare arbitrară de memorie
+- FĂRĂ dezactivare software de securitate
+- FĂRĂ bypass la securitatea sistemului de operare
+- FĂRĂ colectare de informații neconexe despre utilizator
+- Nu presupune că orice proces suspect e automat un cheat
+- Distincție clară: informație / avertisment / indicator suspect /
+  detecție cu încredere mare / încălcare confirmată
+
+Serviciu Windows în fundal (privilegii minime necesare), separat de UI
+desktop. Heartbeat client-backend, expirare sesiune, verificare sănătate
+serviciu, monitorizare proces joc, raportare evenimente, recuperare
+automată din întreruperi de rețea temporare, reînnoire securizată sesiune.
+
+PLAYZEK GAME INTEGRITY (CS 1.6 și CS2, separat, NU aceleași mecanisme):
+- identifică instalările de joc suportate
+- verifică semnături executabile unde e aplicabil
+- verifică hash-uri fișiere cunoscute legitime
+- identifică fișiere de joc modificate
+- detectează modificări neautorizate ale componentelor relevante ale jocului
+- urmărește integritatea procesului jocului
+- asociază rapoarte de securitate cu sesiuni de joc active
+
+PLAYZEK BEHAVIORAL ENGINE — folosește telemetrie legitimă de gameplay din
+integrări autorizate cu serverul de joc. Analizează: statistici mișcare
+aim, consistență recoil, distribuție timp de reacție, acuratețe în timp,
+distribuție headshot, pattern-uri de achiziție țintă, performanță per
+armă, deviații statistice, pattern-uri suspecte repetate.
+Metode: analiză statistică, detecție bazată pe reguli, detecție de
+anomalii, machine learning unde există suficiente date validate.
+Cerințe: detecții explicabile, reguli versionate, urmărire fals-pozitive,
+revizuire manuală, scor de încredere, praguri configurabile, păstrare
+dovezi. NU se bănuiește automat un jucător pe baza unei singure statistici
+izolate. NU se afirmă că analiza comportamentală dovedește cheat fără
+dovezi suplimentare.
+
+Backend pe Ubuntu Linux. Stack recomandat: Go sau ASP.NET Core,
+PostgreSQL, Redis, REST API, WebSocket, Nginx, Docker, TLS 1.2+/1.3.
+
+Module backend: Authentication, Player Management, Device Registration,
+Session Management, Integrity Reports, Process Detection, Behavioral
+Analysis, Game Server Registration, Server Authorization, Ban Management,
+Evidence Management, Update Distribution, Administration, Audit Logs,
+Health Monitoring.
+
+Securitate backend: hashing parole securizat, token-uri de sesiune
+semnate, expirare/revocare token, autentificare server-to-server,
+control acces bazat pe roluri, rate limiting API, validare cereri,
+migrații bază de date, backup/restore, logging structurat, endpoint-uri
+de sănătate. Fără secrete expuse în frontend sau repo-uri.
+
+Tabele PostgreSQL: users, player_profiles, registered_devices,
+game_servers, game_sessions, anti_cheat_sessions, client_versions,
+integrity_reports, detection_events, behavioral_reports, bans,
+ban_appeals, evidence_records, administrator_accounts,
+administrator_roles, audit_logs, update_packages, detection_rules,
+system_settings. Chei străine, indecși, constrângeri, migrații, politici
+de retenție, tranzacții corecte.
+
+Redis pentru sesiuni temporare, rate limiting, distribuire evenimente
+live.
+
+Dashboard administrare (React + TypeScript), secțiuni: jucători
+înregistrați, jucători protejați activi, servere conectate, sesiuni
+active, evenimente de detecție, revizuiri în așteptare, ban-uri active,
+sănătate backend, evenimente de securitate live, istoricul sesiunilor/
+detecțiilor/ban-urilor, status cont, dovezi, apeluri de ban, decizii
+administrator, istoric complet de audit, status servere CS 1.6/CS2,
+număr jucători, status plugin, conectivitate backend, autorizare server,
+versiuni instalate, update-uri client, compatibilitate, status
+integritate, verificări eșuate, conturi/roluri/permisiuni administrator,
+setări de securitate, configurare detecție, jurnale de audit.
+TOATE secțiunile dashboard trebuie să folosească date reale din backend —
+FĂRĂ statistici simulate în producție.
+
+PLAYZEK CS16 SHIELD (plugin server CS 1.6):
+- AMX Mod X, Pawn, HLDS, compatibilitate ReHLDS/ReAPI unde e aplicabil
+- înregistrare server, autentificare server, raportare conectare jucător
+- verificare SteamID unde e disponibilă, autorizare/expirare sesiune
+- telemetrie gameplay, raportare detecție, sincronizare ban-uri
+- aplicare reguli server-side, monitorizare conectivitate backend
+- cache local pentru întreruperi temporare
+- NU presupune că AMXX poate inspecta întregul sistem Windows al
+  jucătorului — se bazează doar pe autorizarea validată de backend și
+  informații server-side autoritative
+
+PLAYZEK CS2 SHIELD — investighează mecanismele de integrare server CS2
+suportate oficial, plugin-uri compatibile. Autorizare jucător,
+autentificare server, verificare sesiune, telemetrie, raportare detecție,
+sincronizare ban-uri, monitorizare sănătate server. NU reutilizează
+presupunerile specifice CS 1.6.
+
+PLAYZEK AC UPDATER — verificare versiune, manifeste semnate de update,
+descărcări securizate, verificare hash fișier, progres instalare,
+rollback, canale de release, istoric update, verificare compatibilitate.
+Niciodată nu instalează pachete neverificate sau suprascrie fișiere de
+joc/configurații neconexe.
+
+Fiecare detecție importantă are o înregistrare de dovadă structurată:
+event ID, player ID, session ID, server ID, timestamp, tip detecție,
+severitate, încredere, dovezi suport, versiune regulă, notițe reviewer,
+decizie finală. Decizii posibile: încălcare confirmată, dovezi
+insuficiente, fals pozitiv, revizuire manuală, apel acceptat, apel
+respins. Toate acțiunile administrative sunt logate.
+
+Securitate generală: TLS, rapoarte client semnate, update-uri semnate,
+stocare securizată token, servicii cu privilegii minime, MFA
+administrator, logging de audit, autentificare API securizată,
+restricții acces bază de date, rate limiting, prevenire replay attack,
+minimizare date, politici de retenție.
+
+Lansarea inițială folosește componente de securitate în user-mode. FĂRĂ
+driver de kernel nesemnat. Dacă se propune un driver de kernel în viitor,
+necesită: justificare tehnică scrisă, model de amenințări, audit de
+securitate, code signing, testare compatibilitate Windows, recuperare
+din crash, dezinstalare/rollback, consimțământ explicit al utilizatorului.
+
+Structură monorepo sugerată:
+playzek-anticheat/
+  client/
+    desktop-app/
+    native-engine/
+    integrity-engine/
+    updater/
+  backend/
+    api/
+    authentication/
+    detection/
+    behavioral-engine/
+    server-management/
+    update-service/
+  dashboard/
+    frontend/
+  integrations/
+    cs16/
+    cs2/
+  infrastructure/
+    docker/
+    nginx/
+    database/
+    monitoring/
+  documentation/
+    architecture/
+    api/
+    installation/
+    security/
+  tests/
+    unit/
+    integration/
+    security/
+    performance/
+
+Faze de lucru:
+PHASE 1: Arhitectură, inspecție repo, fundație backend, autentificare, bază de date
+PHASE 2: Aplicație Windows funcțională, instalator, înregistrare dispozitiv, verificări inițiale sistem
+PHASE 3: Integritate sistem, inspecție proces, integritate joc, protecție live
+PHASE 4: Integrare server CS 1.6 și validare sesiune backend
+PHASE 5: Motor de detecție, management dovezi, analiză comportamentală
+PHASE 6: Integrare CS2
+PHASE 7: Revizuire securitate, testare compatibilitate, testare performanță, deployment producție
+
+Reguli stricte menționate explicit de user în prompt:
+1. Inspectează repository-ul existent înainte de a schimba fișiere
+2. Păstrează fișierele sursă existente și funcționalitățile care merg
+3. Nu șterge configurație existentă fără justificare
+4. Niciodată nu înlocui funcționalitate reală cu date mock
+5. Niciodată nu crea butoane decorative nefuncționale
+6. Niciodată nu simula protecție de succes
+7. Niciodată nu pretinde că o scanare funcționează dacă doar afișează o animație
+8. Niciodată nu pretinde că un cheat a fost detectat fără dovezi
+9. Niciodată nu expune credențiale
+10. Niciodată nu instalează silențios componente privilegiate
+11. Cod mentenabil și testabil
+12. API-uri reale și operații reale de bază de date
+13. Documentează onest limitările tehnice
+14. Menține compatibilitate cu versiunile Windows/Ubuntu suportate
+
+Un detaliu notat chiar de user în mesajul său: aplicația trebuie să aibă
+verificări reale, dar detecția nu poate garanta identificarea tuturor
+cheat-urilor — protecție stratificată, verificări locale + validare
+server-side + analiză comportamentală, fără să riște calculatoarele
+jucătorilor cu drivere de kernel insuficient testate.
+
+NOTĂ (adăugată de Claude, nu de user): decizia luată împreună cu user-ul
+în chat a fost să NU se rescrie totul de la zero în acest stack exact
+(C++/.NET + Go + PostgreSQL + React), ci să se evolueze incremental
+stack-ul deja existent și funcțional (Electron + Node/Express + SQLite),
+împingând arhitectura cât mai aproape posibil de cerințele reale de mai
+sus (autentificare, sesiuni validate server-side, date reale, fără
+driver de kernel, fără citire de memorie arbitrară).

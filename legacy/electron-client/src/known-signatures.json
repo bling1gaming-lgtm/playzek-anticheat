@@ -1,0 +1,20 @@
+{
+  "_comment": "Listă de pornire, extensibilă. În producție, clientul ar descărca această listă periodic de pe server (endpoint /api/anticheat/signatures), nu ar fi hardcodată local.",
+  "processNames": [
+    "cheatengine-x86_64.exe",
+    "cheatengine-i386.exe",
+    "aimware.exe",
+    "ac130.exe",
+    "d3d9hook.exe"
+  ],
+  "windowTitleContains": [
+    "cheat engine",
+    "aimware",
+    "wallhack",
+    "legit bot"
+  ],
+  "suspiciousLoadedModules": [
+    "d3d9_hook.dll",
+    "inject.dll"
+  ]
+}

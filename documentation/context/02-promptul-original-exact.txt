@@ -1,0 +1,779 @@
+Obiectivul: PLAYZEK ANTI-CHEAT să fie un produs software real, nu un demo, nu doar un dashboard și nu doar un plugin AMXX.
+PLAYZEK ANTI-CHEAT
+
+Windows Installer
+
+Aplicație pentru jucători
+Anti-Cheat Engine
+
+Scanare și protecție activă
+Ubuntu Backend
+
+API și baze de date
+Admin Dashboard
+
+Control și monitorizare
+You are acting as a complete senior engineering team consisting of:
+- Principal Software Architect
+- Windows Systems Engineer
+- C++ Engineer
+- Windows Security Engineer
+- Anti-Cheat Research Engineer
+- Backend Engineer
+- Game Server Integration Engineer
+- Database Architect
+- Frontend Engineer
+- DevOps Engineer
+- Quality Assurance Engineer
+Your mission is to DESIGN, DEVELOP, TEST AND DELIVER a complete, independent, production-oriented anti-cheat ecosystem named:
+This is an original product developed exclusively for the PlayZek gaming platform.
+
+Do not include references, branding, names, logos, proprietary source code, or interface text belonging to other anti-cheat products.
+
+Develop an original architecture, original detection modules, original user interface and original infrastructure.
+
+IMPORTANT:
+
+The primary product is a REAL INSTALLABLE WINDOWS DESKTOP APPLICATION that players download and install before joining protected PlayZek game servers.
+
+A website-only solution is NOT acceptable.
+
+A static dashboard is NOT acceptable.
+
+A simulated anti-cheat scan is NOT acceptable.
+
+A fake protection status is NOT acceptable.
+
+The complete system must contain an actual Windows application, actual security checks, actual backend communication, actual authentication, and actual game server integration.
+Develop a complete anti-cheat ecosystem consisting of:
+1. PLAYZEK ANTI-CHEAT Windows Client.
+2. PLAYZEK System Integrity Engine.
+3. PLAYZEK Process Inspection Engine.
+4. PLAYZEK Game Integrity Engine.
+5. PLAYZEK Behavioral Detection Engine.
+6. PLAYZEK Central Backend.
+7. PLAYZEK Player Authentication.
+8. PLAYZEK Security Monitoring.
+9. PLAYZEK Web Administration Dashboard.
+10. PLAYZEK CS 1.6 Shield.
+11. PLAYZEK CS2 Shield.
+12. PLAYZEK Ban and Evidence Management.
+13. PLAYZEK Secure Update System.
+Initial game support:
+- Counter-Strike 1.6.
+- Counter-Strike 2.
+Future architecture must support additional games.
+The Windows application is the main player-facing product.
+
+Players must download and install it before entering protected PlayZek servers.
+
+Supported operating systems:
+- Windows 10 22H2, subject to supported security features and compatibility.
+- Windows 11, including supported current builds.
+Use:
+- C++20 for native Windows security components.
+- C# / .NET 10 for desktop application components where appropriate.
+- Windows SDK.
+- Documented Windows APIs.
+- Secure HTTPS communication.
+Choose a maintainable architecture and explain the technology choices before implementation.
+Create a professional Windows installer.
+
+Deliverables:
+- PLAYZEK-ANTICHEAT-Setup.exe or MSI.
+- Application installation.
+- Required runtime verification.
+- Application update mechanism.
+- Uninstaller.
+- Repair installation.
+- Version information.
+- Installation logs.
+Use code signing for production releases.
+
+Do not require disabling Windows Defender, Secure Boot, antivirus, or other Windows security features.
+Create a modern, premium Windows desktop interface.
+
+Application name:
+
+PLAYZEK ANTI-CHEAT
+
+Branding:
+- Dark graphite background.
+- Black surfaces.
+- Orange and red accents.
+- Silver typography.
+- Premium esports cybersecurity appearance.
+- Subtle animations.
+- Modern icons.
+- Compact layouts.
+- Smooth transitions.
+Avoid oversized elements, excessive gradients, generic templates, and unnecessary animations.
+Create the following functional sections:
+- Protection status.
+- Player account.
+- Device status.
+- Current client version.
+- Current session.
+- Security overview.
+- Last system scan.
+- Connected game server.
+- Start full scan.
+- Quick scan.
+- Scan progress.
+- Scan categories.
+- Detected indicators.
+- Scan history.
+- Export security report.
+- Protection service status.
+- Active game detection.
+- Relevant process inspection.
+- System integrity monitoring.
+- Security event notifications.
+- Session validation.
+- Backend connection status.
+- CS 1.6 status.
+- CS2 status.
+- Game file integrity.
+- Game process integrity.
+- Unauthorized modifications.
+- Protected server status.
+- Previous scans.
+- Detection events.
+- Warnings.
+- Security reports.
+- Review status.
+- Start with Windows.
+- Notifications.
+- Update preferences.
+- Privacy settings.
+- Language.
+- Diagnostics.
+- PlayZek account.
+- Registered device.
+- Active sessions.
+- Account status.
+- Logout.
+Every interface element must perform its advertised function.
+Implement this exact workflow:
+
+DOWNLOAD
+↓
+INSTALL
+↓
+LOGIN
+↓
+REGISTER DEVICE
+↓
+SYSTEM COMPATIBILITY CHECK
+↓
+SYSTEM SECURITY SCAN
+↓
+ENABLE PROTECTION
+↓
+LAUNCH GAME
+↓
+CONNECT TO PLAYZEK SERVER
+↓
+SERVER VALIDATES ANTI-CHEAT SESSION
+
+The player must have a valid, active, authenticated anti-cheat session to access protected servers.
+
+The server must independently validate the session.
+
+Do not trust a simple client-side status indicator.
+
+If the client closes, loses authorization, or fails validation, the protected session must expire according to server policy.
+
+Provide clear messages explaining why a player cannot join.
+Create:
+
+PLAYZEK INTEGRITY ENGINE
+
+Responsibilities:
+- Windows compatibility checks.
+- Secure Boot verification.
+- TPM 2.0 availability and status.
+- VBS status.
+- System security configuration.
+- Application installation integrity.
+- Critical executable signature verification.
+- Critical file hash verification.
+- Anti-cheat service integrity.
+- Known vulnerable driver indicators.
+- Security event collection.
+Use documented and supported Windows APIs.
+
+Generate structured reports.
+
+Each report must contain:
+- Unique report ID.
+- Player ID.
+- Device registration ID.
+- Session ID.
+- Timestamp.
+- Windows version.
+- Client version.
+- Check category.
+- Result.
+- Severity.
+- Evidence reference.
+Do not collect unrelated personal files or sensitive personal information.
+Create:
+
+PLAYZEK DETECTION ENGINE
+
+The system should detect security indicators associated with:
+- Known cheat software.
+- Unauthorized game modifications.
+- Suspicious process interactions.
+- Unauthorized DLL injection indicators.
+- Unexpected modifications to game memory.
+- Suspicious external memory access.
+- Known vulnerable or untrusted drivers.
+- Unauthorized debugging or tampering indicators.
+- Modified game executables.
+- Suspicious runtime behavior.
+Use layered detection.
+
+Detection methods must be based on documented Windows interfaces and controlled, authorized inspection.
+
+Important requirements:
+- No rootkits.
+- No stealth mechanisms.
+- No hidden persistence.
+- No arbitrary memory modification.
+- No disabling security software.
+- No bypassing operating system security.
+- No collection of unrelated user information.
+Do not assume every suspicious process is a cheat.
+
+Maintain a distinction between:
+- Information.
+- Warning.
+- Suspicious indicator.
+- High-confidence detection.
+- Confirmed violation.
+The application must stay active during protected gameplay.
+
+Implement:
+- Background Windows service with least required privileges.
+- Client-to-backend heartbeat.
+- Session expiration.
+- Service health verification.
+- Game process monitoring.
+- Relevant integrity checks.
+- Event reporting.
+- Automatic recovery from temporary network interruptions.
+- Secure session renewal.
+The desktop UI and background service must be separate components.
+
+Do not give the desktop interface unnecessary system privileges.
+
+The service must not silently disable or interfere with unrelated applications.
+Create:
+
+PLAYZEK GAME INTEGRITY
+
+For CS 1.6 and CS2:
+- Identify supported game installations.
+- Verify executable signatures where applicable.
+- Verify known legitimate file hashes.
+- Identify modified game files.
+- Detect unauthorized modifications to relevant game components.
+- Track game process integrity.
+- Associate security reports with active game sessions.
+Maintain game-specific compatibility profiles.
+
+Do not assume CS 1.6 and CS2 use the same detection mechanisms.
+Create:
+
+PLAYZEK BEHAVIORAL ENGINE
+
+Use legitimate gameplay telemetry from authorized game-server integrations.
+
+Analyze:
+- Aim movement statistics.
+- Recoil consistency.
+- Reaction-time distributions.
+- Accuracy over time.
+- Headshot distributions.
+- Target acquisition patterns.
+- Weapon-specific performance.
+- Statistical deviations.
+- Repeated suspicious patterns.
+Use:
+- Statistical analysis.
+- Rule-based detection.
+- Anomaly detection.
+- Machine learning where sufficient validated data exists.
+Requirements:
+- Explainable detections.
+- Versioned detection rules.
+- False-positive tracking.
+- Manual review.
+- Confidence scoring.
+- Configurable thresholds.
+- Evidence retention.
+Never automatically ban a player based on one isolated statistic.
+
+Do not claim behavioral analysis proves cheating without supporting evidence.
+Deploy the backend on Ubuntu Linux.
+
+Recommended stack:
+- Go or ASP.NET Core.
+- PostgreSQL.
+- Redis.
+- REST API.
+- WebSocket.
+- Nginx.
+- Docker.
+- TLS 1.2+ / TLS 1.3.
+Backend modules:
+1. Authentication.
+2. Player Management.
+3. Device Registration.
+4. Session Management.
+5. Integrity Reports.
+6. Process Detection.
+7. Behavioral Analysis.
+8. Game Server Registration.
+9. Server Authorization.
+10. Ban Management.
+11. Evidence Management.
+12. Update Distribution.
+13. Administration.
+14. Audit Logs.
+15. Health Monitoring.
+Implement:
+- Secure password hashing.
+- Signed session tokens.
+- Token expiration.
+- Token revocation.
+- Server-to-server authentication.
+- Role-based access control.
+- API rate limiting.
+- Request validation.
+- Database migrations.
+- Backup and restore.
+- Structured logging.
+- Health endpoints.
+Do not expose secrets in frontend code or source repositories.
+Use PostgreSQL.
+
+Create normalized tables:
+- users
+- player_profiles
+- registered_devices
+- game_servers
+- game_sessions
+- anti_cheat_sessions
+- client_versions
+- integrity_reports
+- detection_events
+- behavioral_reports
+- bans
+- ban_appeals
+- evidence_records
+- administrator_accounts
+- administrator_roles
+- audit_logs
+- update_packages
+- detection_rules
+- system_settings
+Implement:
+- Foreign keys.
+- Indexes.
+- Constraints.
+- Database migrations.
+- Retention policies.
+- Appropriate transaction handling.
+Use Redis for temporary sessions, rate limiting and real-time event distribution.
+Create a fully functional administration dashboard.
+
+Technology:
+- React.
+- TypeScript.
+- Responsive CSS.
+- WebSocket live events.
+Design:
+- Dark graphite.
+- Black.
+- Orange.
+- Red.
+- Silver.
+- Premium esports cybersecurity aesthetic.
+Dashboard sections:
+- Registered players.
+- Active protected players.
+- Connected servers.
+- Active sessions.
+- Detection events.
+- Pending reviews.
+- Active bans.
+- Backend health.
+- Active player sessions.
+- Real-time security events.
+- Connected servers.
+- Session validity.
+- Detection severity.
+- Player accounts.
+- Registered devices.
+- Session history.
+- Detection history.
+- Ban history.
+- Account status.
+- Detection events.
+- Category.
+- Severity.
+- Confidence.
+- Evidence.
+- Timeline.
+- Manual review.
+- False-positive reporting.
+- Permanent bans.
+- Temporary bans.
+- Warnings.
+- Evidence.
+- Ban appeals.
+- Administrator decisions.
+- Full audit history.
+- CS 1.6.
+- CS2.
+- Server status.
+- Player count.
+- Plugin status.
+- Backend connectivity.
+- Server authorization.
+- Installed versions.
+- Client updates.
+- Compatibility.
+- Integrity status.
+- Failed checks.
+- Administrator accounts.
+- Roles.
+- Permissions.
+- Security settings.
+- Detection configuration.
+- Audit logs.
+Every dashboard section must use real backend data.
+
+Do not use fake statistics in production.
+Create:
+
+PLAYZEK CS16 SHIELD
+
+Technology:
+- AMX Mod X.
+- Pawn.
+- HLDS.
+- ReHLDS compatibility where applicable.
+- ReAPI compatibility where applicable.
+Features:
+- Server registration.
+- Server authentication.
+- Player connection reporting.
+- SteamID verification where available.
+- Session authorization.
+- Session expiration.
+- Gameplay telemetry.
+- Detection reporting.
+- Ban synchronization.
+- Server-side rule enforcement.
+- Backend connectivity monitoring.
+- Local cache for temporary outages.
+Create a configurable AMXX plugin.
+
+The plugin must communicate securely with the backend.
+
+Do not assume AMXX can inspect a player's entire Windows system.
+
+The plugin must only trust validated backend authorization and authoritative server-side information.
+
+Provide:
+- Source code.
+- Compiled plugin.
+- Configuration.
+- Installation instructions.
+- Compatibility documentation.
+Create:
+
+PLAYZEK CS2 SHIELD
+
+Investigate the supported CS2 server integration mechanisms.
+
+Use officially supported server interfaces and compatible plugins.
+
+Implement:
+- Player authorization.
+- Server authentication.
+- Session verification.
+- Gameplay telemetry.
+- Detection event reporting.
+- Ban synchronization.
+- Server health monitoring.
+Document limitations and compatibility.
+
+Do not reuse CS 1.6-specific assumptions.
+Create:
+
+PLAYZEK AC UPDATER
+
+Features:
+- Version checking.
+- Signed update manifests.
+- Secure downloads.
+- File hash verification.
+- Installation progress.
+- Rollback.
+- Release channels.
+- Update history.
+- Compatibility verification.
+Never install unverified packages.
+
+Never overwrite unrelated game files or user configurations.
+Every important detection must have a structured evidence record.
+
+Fields:
+- Event ID.
+- Player ID.
+- Session ID.
+- Server ID.
+- Timestamp.
+- Detection type.
+- Severity.
+- Confidence.
+- Supporting evidence.
+- Rule version.
+- Reviewer notes.
+- Final decision.
+Possible decisions:
+- Confirmed violation.
+- Insufficient evidence.
+- False positive.
+- Manual review.
+- Appeal accepted.
+- Appeal rejected.
+All administrative actions must be logged.
+Implement:
+- TLS communication.
+- Signed client reports.
+- Signed updates.
+- Secure token storage.
+- Least-privilege services.
+- Administrator MFA.
+- Audit logging.
+- Secure API authentication.
+- Database access restrictions.
+- Rate limiting.
+- Replay attack prevention.
+- Data minimization.
+- Retention policies.
+The initial release must use user-mode security components.
+
+Do not deploy an unsigned kernel driver.
+
+If a future kernel driver is proposed, require:
+- Written technical justification.
+- Threat model.
+- Security audit.
+- Code signing.
+- Windows compatibility testing.
+- Crash recovery.
+- Uninstallation and rollback.
+- Explicit user consent.
+Do not disable Windows security features.
+Use a maintainable monorepo:
+
+playzek-anticheat/
+client/
+desktop-app/
+native-engine/
+integrity-engine/
+updater/
+backend/
+api/
+authentication/
+detection/
+behavioral-engine/
+server-management/
+update-service/
+dashboard/
+frontend/
+integrations/
+cs16/
+cs2/
+infrastructure/
+docker/
+nginx/
+database/
+monitoring/
+documentation/
+architecture/
+api/
+installation/
+security/
+integrations/
+tests/
+unit/
+integration/
+security/
+performance/
+
+Adapt this structure when necessary, but maintain clear module boundaries.
+Create real tests for:
+- Login.
+- Authentication.
+- Session expiration.
+- Device registration.
+- Client integrity.
+- Process inspection.
+- Game integrity.
+- Update signatures.
+- Backend communication.
+- API security.
+- Database operations.
+- CS 1.6 integration.
+- CS2 integration.
+- Ban synchronization.
+- Network interruption.
+- False-positive handling.
+Build a controlled test environment with simulated suspicious events.
+
+Clearly distinguish simulated test events from real detections.
+Backend target:
+
+Ubuntu VPS.
+
+Provide:
+- Docker Compose.
+- Nginx configuration.
+- PostgreSQL setup.
+- Redis setup.
+- TLS configuration.
+- Firewall recommendations.
+- Environment configuration.
+- Database migrations.
+- Backup scripts.
+- Restore procedures.
+- Monitoring.
+- Deployment documentation.
+Never expose database ports publicly unless explicitly required and secured.
+The final product must include:
+1. Windows installer.
+2. Windows desktop executable.
+3. Background protection service.
+4. System integrity engine.
+5. Process inspection engine.
+6. Game integrity engine.
+7. Backend source code.
+8. PostgreSQL schema.
+9. Redis configuration.
+10. Web administration dashboard.
+11. CS 1.6 AMXX plugin.
+12. CS2 integration.
+13. Update system.
+14. Docker deployment.
+15. Documentation.
+16. Automated tests.
+17. Installation manuals.
+18. Security audit report.
+Do not mark a deliverable complete unless it actually exists and has been tested.
+Work in phases, but do not stop at planning.
+
+PHASE 1:
+Architecture, repository inspection, backend foundation, authentication and database.
+
+PHASE 2:
+Functional Windows application, installer, device registration and initial system checks.
+
+PHASE 3:
+System integrity, process inspection, game integrity and live protection.
+
+PHASE 4:
+CS 1.6 server integration and backend session validation.
+
+PHASE 5:
+Detection engine, evidence management and behavioral analysis.
+
+PHASE 6:
+CS2 integration.
+
+PHASE 7:
+Security review, compatibility testing, performance testing and production deployment.
+
+After each phase:
+- Compile.
+- Run tests.
+- Fix errors.
+- Update documentation.
+- Report actual completion status.
+- Continue to the next phase.
+1. Inspect the existing PlayZek repository before changing files.
+2. Preserve existing source files and working features.
+3. Do not delete existing configuration without justification.
+4. Never replace real functionality with mock data.
+5. Never create decorative nonfunctional buttons.
+6. Never simulate successful protection.
+7. Never claim a scan works if it only displays an animation.
+8. Never claim a cheat was detected without evidence.
+9. Never expose credentials.
+10. Never silently install privileged components.
+11. Use maintainable and testable code.
+12. Build actual APIs and actual database operations.
+13. Document technical limitations honestly.
+14. Maintain compatibility with the supported Windows and Ubuntu versions.
+Start by inspecting the development environment and the existing PlayZek project.
+
+Determine:
+- Existing repository structure.
+- Available tools.
+- Windows development environment.
+- Ubuntu deployment environment.
+- Existing game server architecture.
+- Existing authentication systems.
+- Existing database infrastructure.
+Then:
+1. Produce the technical architecture.
+2. Produce a component dependency diagram.
+3. Create the project structure.
+4. Implement Phase 1 immediately.
+5. Continue progressively through the remaining phases.
+Do not deliver a simple concept or static prototype.
+
+The objective is a REAL, INSTALLABLE, TESTABLE AND DEPLOYABLE anti-cheat product.
+
+PRODUCT NAME:
+
+PLAYZEK ANTI-CHEAT
+
+BRAND:
+
+PLAYZEK
+
+MISSION:
+
+Protect PlayZek gaming servers through a dedicated Windows anti-cheat client, layered system integrity checks, real-time session authorization, game-server integration, and evidence-based detection.
+1. Deschide Claude Code sau mediul de dezvoltare în care lucrezi.
+2. Deschide repository-ul PlayZek, dacă există deja, sau creează un proiect nou.
+3. Trimite promptul complet de mai sus.
+4. Permite-i să inspecteze proiectul înainte de a modifica fișiere.
+5. Cere-i să implementeze efectiv fiecare etapă și să testeze componentele.
+Livrabilele principale
+PLAYZEK-ANTICHEAT-Setup.exe
+
+Instalator pentru jucători
+PLAYZEK Protection Service
+
+Serviciul de protecție activă
+PLAYZEK AC Backend
+
+Instalat pe VPS Ubuntu
+PLAYZEK AC Dashboard
+
+Administrarea și monitorizarea sistemului
+CS 1.6 / CS2 Shield
+
+Integrare cu serverele de joc
+Un detaliu important: aplicația trebuie să aibă verificări reale, dar detecția nu poate garanta identificarea tuturor cheat-urilor. Vom urmări o protecție stratificată, cu verificări locale, validare server-side și analiză comportamentală, fără să riscăm calculatoarele jucătorilor cu drivere kernel insuficient testate.
+
+Aceasta este specificația pe care aș folosi-o ca punct de plecare pentru dezvoltarea oficială PLAYZEK ANTI-CHEAT.

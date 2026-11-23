@@ -1,0 +1,15 @@
+node_modules/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+.env
+!.env.example
+*.log
+dist/
+out/
+bin/
+obj/
+*.user
+.vs/
+TestResults/

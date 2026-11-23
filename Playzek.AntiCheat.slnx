@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/backend/" />
+  <Folder Name="/backend/api/">
+    <Project Path="backend/api/Playzek.Api/Playzek.Api.csproj" />
+  </Folder>
+  <Folder Name="/backend/authentication/">
+    <Project Path="backend/authentication/Playzek.Authentication/Playzek.Authentication.csproj" />
+  </Folder>
+  <Folder Name="/backend/data/">
+    <Project Path="backend/data/Playzek.Data/Playzek.Data.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/integration/">
+    <Project Path="tests/integration/Playzek.Tests.Integration/Playzek.Tests.Integration.csproj" />
+  </Folder>
+  <Folder Name="/tests/unit/">
+    <Project Path="tests/unit/Playzek.Tests.Unit/Playzek.Tests.Unit.csproj" />
+  </Folder>
+</Solution>

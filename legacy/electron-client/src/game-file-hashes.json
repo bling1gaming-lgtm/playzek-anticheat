@@ -1,0 +1,4 @@
+{
+  "_comment": "Hash-urile SHA-256 ale fișierelor oficiale CS 1.6, pentru detectarea modificărilor (wallhack models, radar sounds etc). Lista de pornire e goală — se completează rulând scriptul tools/generate-hashes.js pe o instalare curată CS 1.6, apoi se distribuie clientilor. În producție, lista s-ar descărca de pe server, nu ar sta hardcodată local.",
+  "files": {}
+}

@@ -1,0 +1,16 @@
+{
+  "name": "playzek-anticheat-backend",
+  "version": "0.2.0",
+  "description": "Backend Playzek Anti-Cheat — auth, sesiuni, integritate, analiza meciurilor",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.3.0",
+    "better-sqlite3": "^11.0.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  }
+}

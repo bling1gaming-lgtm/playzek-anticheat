@@ -1,0 +1,6 @@
+{
+  "_comment": "SHA-256 ale executabilelor cunoscute de cheat. Mai greu de păcălit prin simpla redenumire a fișierului decât verificarea după nume. În producție, lista se descarcă periodic de pe server.",
+  "sha256": [
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b85"
+  ]
+}

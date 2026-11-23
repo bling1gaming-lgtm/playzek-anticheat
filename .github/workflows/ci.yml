@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: playzek_ci
+          POSTGRES_PASSWORD: playzek_ci
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U playzek_ci"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet tool restore
+      - run: dotnet build Playzek.AntiCheat.slnx -c Release
+      - name: Migrațiile sunt la zi cu modelul
+        run: dotnet ef migrations has-pending-model-changes --project backend/data/Playzek.Data --startup-project backend/data/Playzek.Data
+      - name: Teste (SQLite in-memory)
+        run: dotnet test Playzek.AntiCheat.slnx -c Release --no-build
+      - name: Teste de integrare pe PostgreSQL 17 (migrații reale)
+        env:
+          PLAYZEK_TEST_POSTGRES: Host=localhost;Port=5432;Username=playzek_ci;Password=playzek_ci
+        run: dotnet test tests/integration/Playzek.Tests.Integration -c Release --no-build
